@@ -1,0 +1,26 @@
+# Machine-local agent skill links created by setup-openspeckit.
+/.agents/skills/
+/.claude/skills/
+/.codex/skills/
+
+# Local environment and credentials.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python and Frappe development artifacts.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+sites/
+logs/
+
+# Editor and operating-system artifacts.
+.DS_Store
+.idea/
+.vscode/
