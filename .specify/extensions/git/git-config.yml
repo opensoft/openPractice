@@ -73,4 +73,4 @@ auto_commit:
 
 checkout_mode: worktree
 base_branch: main
-worktree_root: ../openPractice-worktrees
+worktree_root: worktrees

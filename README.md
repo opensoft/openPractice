@@ -5,11 +5,11 @@ scheduling, billing, and revenue-cycle platform.
 
 ## Status
 
-The repository currently contains project-governance and specification tooling.
-The Frappe application and practice-management data model have not yet been
-implemented.
-
-The planned Frappe application/package name is `open_practice`.
+This repository is now the assembly root of the openPractice Triad. The
+specifications live in the spec leg (`spec/`); the Frappe application
+`open_practice`, the planned application/package name, has not been started and
+will live in the code leg (`code/`). The practice-management data model has not
+yet been implemented.
 
 ## Product boundary
 
@@ -34,11 +34,45 @@ fork.
 ## Spec-driven development
 
 Product and architecture changes use OpenSpec for governance and Spec Kit for
-feature specification, planning, implementation, and verification. Specs and
-code live together in this repository so each implementation commit remains
-traceable to its requirements and tests.
+feature specification, planning, implementation, and verification.
 
-See [AGENTS.md](AGENTS.md) for the shared workflow and repository constraints.
+- OpenSpec governance lives under `spec/openspec/`.
+- Speckit features live under `spec/specs/`.
+- The implementation lives under `code/`.
+- The pin commit in this assembly root links the two legs, so each
+  implementation commit stays traceable to the requirements and tests it
+  satisfies.
+
+See [AGENTS.md](AGENTS.md) for the shared workflow and repository constraints,
+and [AGENTS-shape.md](AGENTS-shape.md) for the rules of this repository's
+shape, including how a leg is advanced.
+
+## Get started
+
+```sh
+git clone --recurse-submodules https://github.com/opensoft/openPractice.git
+cd openPractice
+make bootstrap
+```
+
+`make bootstrap` puts each leg on the `main` branch at its pinned commit
+where that loses no commit, says why where it does not, and runs the
+validators. `make validate` runs the same checks CI does.
+
+## The three legs
+
+| role | repository | path | holds |
+|---|---|---|---|
+| assembly | `opensoft/openPractice` | `.` | this manifest, the pins, the gate |
+| spec | `opensoft/openPractice-spec` | `spec/` | requirements, decisions, acceptance |
+| code | `opensoft/openPractice-code` | `code/` | the implementation and its tests |
+
+All three carry the GitHub topic `xf-project-openpractice`, so the
+organisation's own search surfaces the group without a checkout.
+
+Adopted in place from [opensoft/openRepoShape](https://github.com/opensoft/openRepoShape)
+at `4bf963f0ca416b142652bb608cafe5c76d893faa`. Elected by Brett Heap on
+2026-11-14, against `openxFactory docs/project-repo-schema.md`.
 
 ## License
 
